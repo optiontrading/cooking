@@ -1,0 +1,62 @@
+Collecting torch
+  Downloading torch-2.0.1-cp39-cp39-manylinux1_x86_64.whl (619.9 MB)
+Collecting nvidia-cusolver-cu11==11.4.0.1
+  Downloading nvidia_cusolver_cu11-11.4.0.1-2-py3-none-manylinux1_x86_64.whl (102.6 MB)
+Collecting nvidia-cudnn-cu11==8.5.0.96
+  Downloading nvidia_cudnn_cu11-8.5.0.96-2-py3-none-manylinux1_x86_64.whl (557.1 MB)
+Collecting sympy
+  Downloading sympy-1.12-py3-none-any.whl (5.7 MB)
+Collecting jinja2
+  Downloading Jinja2-3.1.2-py3-none-any.whl (133 kB)
+Collecting nvidia-nccl-cu11==2.14.3
+  Downloading nvidia_nccl_cu11-2.14.3-py3-none-manylinux1_x86_64.whl (177.1 MB)
+Collecting filelock
+  Downloading filelock-3.12.4-py3-none-any.whl (11 kB)
+Collecting networkx
+  Downloading networkx-3.1-py3-none-any.whl (2.1 MB)
+Collecting nvidia-curand-cu11==10.2.10.91
+  Downloading nvidia_curand_cu11-10.2.10.91-py3-none-manylinux1_x86_64.whl (54.6 MB)
+Collecting nvidia-cublas-cu11==11.10.3.66
+  Downloading nvidia_cublas_cu11-11.10.3.66-py3-none-manylinux1_x86_64.whl (317.1 MB)
+Collecting typing-extensions
+  Downloading typing_extensions-4.8.0-py3-none-any.whl (31 kB)
+Collecting nvidia-cusparse-cu11==11.7.4.91
+  Downloading nvidia_cusparse_cu11-11.7.4.91-py3-none-manylinux1_x86_64.whl (173.2 MB)
+Collecting nvidia-cuda-nvrtc-cu11==11.7.99
+  Downloading nvidia_cuda_nvrtc_cu11-11.7.99-2-py3-none-manylinux1_x86_64.whl (21.0 MB)
+Collecting nvidia-cuda-runtime-cu11==11.7.99
+  Downloading nvidia_cuda_runtime_cu11-11.7.99-py3-none-manylinux1_x86_64.whl (849 kB)
+Collecting nvidia-nvtx-cu11==11.7.91
+  Downloading nvidia_nvtx_cu11-11.7.91-py3-none-manylinux1_x86_64.whl (98 kB)
+Collecting triton==2.0.0
+  Downloading triton-2.0.0-1-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (63.3 MB)
+Collecting nvidia-cuda-cupti-cu11==11.7.101
+  Downloading nvidia_cuda_cupti_cu11-11.7.101-py3-none-manylinux1_x86_64.whl (11.8 MB)
+Collecting nvidia-cufft-cu11==10.9.0.58
+  Downloading nvidia_cufft_cu11-10.9.0.58-py3-none-manylinux1_x86_64.whl (168.4 MB)
+Requirement already satisfied: setuptools in ./venv/lib/python3.9/site-packages (from nvidia-cublas-cu11==11.10.3.66->torch) (44.1.1)
+Requirement already satisfied: wheel in ./venv/lib/python3.9/site-packages (from nvidia-cublas-cu11==11.10.3.66->torch) (0.41.2)
+Collecting cmake
+  Downloading cmake-3.27.5-py2.py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (26.1 MB)
+Collecting lit
+  Downloading lit-16.0.6.tar.gz (153 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Installing backend dependencies: started
+  Installing backend dependencies: finished with status 'done'
+    Preparing wheel metadata: started
+    Preparing wheel metadata: finished with status 'done'
+Collecting MarkupSafe>=2.0
+  Downloading MarkupSafe-2.1.3-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (25 kB)
+Collecting mpmath>=0.19
+  Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+Building wheels for collected packages: lit
+  Building wheel for lit (PEP 517): started
+  Building wheel for lit (PEP 517): finished with status 'done'
+  Created wheel for lit: filename=lit-16.0.6-py3-none-any.whl size=93584 sha256=ca3a68c67a7cbf16797af32a0ff4bb02ac32942dcd354067284ebbd3a179116d
+  Stored in directory: /tmp/pip-ephem-wheel-cache-uay2setm/wheels/a5/36/d6/cac2e6fb891889b33a548f2fddb8b4b7726399aaa2ed32b188
+Successfully built lit
+Installing collected packages: nvidia-cublas-cu11, mpmath, MarkupSafe, lit, filelock, cmake, typing-extensions, triton, sympy, nvidia-nvtx-cu11, nvidia-nccl-cu11, nvidia-cusparse-cu11, nvidia-cusolver-cu11, nvidia-curand-cu11, nvidia-cufft-cu11, nvidia-cudnn-cu11, nvidia-cuda-runtime-cu11, nvidia-cuda-nvrtc-cu11, nvidia-cuda-cupti-cu11, networkx, jinja2, torch
+Successfully installed MarkupSafe-2.1.3 cmake-3.27.5 filelock-3.12.4 jinja2-3.1.2 lit-16.0.6 mpmath-1.3.0 networkx-3.1 nvidia-cublas-cu11-11.10.3.66 nvidia-cuda-cupti-cu11-11.7.101 nvidia-cuda-nvrtc-cu11-11.7.99 nvidia-cuda-runtime-cu11-11.7.99 nvidia-cudnn-cu11-8.5.0.96 nvidia-cufft-cu11-10.9.0.58 nvidia-curand-cu11-10.2.10.91 nvidia-cusolver-cu11-11.4.0.1 nvidia-cusparse-cu11-11.7.4.91 nvidia-nccl-cu11-2.14.3 nvidia-nvtx-cu11-11.7.91 sympy-1.12 torch-2.0.1 triton-2.0.0 typing-extensions-4.8.0
