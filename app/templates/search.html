@@ -9,11 +9,8 @@
     </head>
     <body>
         <h1>Hi, {{ user.username }}!</h1>
-        <dl>
-            {% for post in posts %}
-            <dt>{{ post.author.recipe_name }}</dt>
-            <dd>{{ post.author.ingredients }}</dd>
-            {% endfor %}
-        </dl>        
+        {% for post in posts %}
+        <div><p>{{ post.author.recipe_name }} says: <b>{{ post.author.ingredients }}</b></p></div>
+        {% endfor %}
     </body>
 </html>
