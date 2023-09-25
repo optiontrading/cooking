@@ -1,0 +1,10 @@
+ner.model = ar.model.ser.gz
+
+tokenize.whitespace = True
+
+ner.applyNumericClassifiers = False
+
+annotators = tokenize,ssplit,ner
+
+outputFormat = serialized
+
