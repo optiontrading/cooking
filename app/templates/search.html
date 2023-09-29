@@ -1,16 +1,17 @@
-<!doctype html>
-<html>
-    <head>
-        {% if title %}
-        <title>{{ title }} - Microblog</title>
-        {% else %}
-        <title>Welcome to Microblog</title>
-        {% endif %}
-    </head>
-    <body>
-        <h1>Hi, {{ user.username }}!</h1>
-        {% for post in posts %}
-        <div><p>{{ post.author.recipe_name }} says: <b>{{ post.author.ingredients }}</b></p></div>
-        {% endfor %}
-    </body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Search : {{ user.username }}!</h1>
+    {% for post in posts %}
+    <div>
+        <p>
+            <b>Recipe Name : {{ post.recipe }}</b><br>
+            <b>Ingredients : {{ post.ingredients }}</b><br>
+            <b>Method : {{ post.method }}</b><br>
+            <b>Book ID : {{ post.bookid }}</b><br>
+            <b>URL : {{ post.url }}</b><br>
+            <b>Title : {{ post.title }}</b><br>
+        </p>
+    </div>
+    {% endfor %}
+{% endblock %}
