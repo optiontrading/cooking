@@ -30,8 +30,10 @@ for doc in cursor:
     print(i)
     i += 1
     # doc['ingredients']
-    doc['ner_1'] = ner_mode_1(doc['ingredients'])
+    # doc['ner_1'] = ner_mode_1(doc['ingredients'])
     # print(doc['ner_1'])
+    doc['ner_2'] = ner_mode_2(doc['ingredients'])
+    print(doc['ner_2'])
     col.update_one({'_id':doc['_id']}, {"$set": doc}, upsert=False)
 
     # todo : save document back

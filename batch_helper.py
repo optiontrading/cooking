@@ -13,10 +13,33 @@ import pymongo
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 
-# Use a pipeline as a high-level helper
-from transformers import pipeline
+import spacy
 
-pipe = pipeline("token-classification", model="edwardjross/xlm-roberta-base-finetuned-recipe-all")
+# Use a pipeline as a high-level helper
+# from transformers import pipeline
+
+# ner 1
+# pipe = pipeline("token-classification", model="edwardjross/xlm-roberta-base-finetuned-recipe-all")
+
+# ner 2
+# load the model and test set. Again, change the paths as required
+nlp = spacy.load('/home/himani/cooking/notebooks/TASTEset/output_eff/model-best')
+
+# load ner model and return ingredient name
+def ner_mode_2(ingredient_str):
+    ner = []
+
+    ner = [tok.text for tok in nlp(ingredient_str) if tok.ent_type_ == 'FOOD']
+
+    # sample_sent = '3/4 cup all purpose flour'
+    # for tok in nlp(sample_sent):
+        # print(tok.ent_type_, tok.text)
+    # tok.ent_type_ for tok in recipe
+
+    ner = ', '.join(ner)
+    # print(ner)
+    return ner
+
 
 # load ner model and return ingredient name
 def ner_mode_1(ingredient_str):
