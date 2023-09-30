@@ -1,22 +1,60 @@
+from batch_helper import *
+
+# todo : import mongodb database
+# Create a new client and connect to the server
+client = MongoClient()
+
+# Send a ping to confirm a successful connection
+try:
+    client.admin.command('ping')
+    print("Pinged your deployment. You successfully connected to MongoDB!")
+except Exception as e:
+    print(e)
+
+database = 'ingredients'
+collection = 'ingredients'
+
+db = client[database]
+col = db[collection]
+
+
+cursor = col.find({})
+
+print('Total Doc : ', col.count_documents({}))
+
+# todo : apply model to all the records with ingredients
+
+i = 1
+
+for doc in cursor:
+    print(i)
+    i += 1
+    # doc['ingredients']
+    doc['ner_1'] = ner_mode_1(doc['ingredients'])
+    # print(doc['ner_1'])
+    col.update_one({'_id':doc['_id']}, {"$set": doc}, upsert=False)
+
+    # todo : save document back
+
+# fetching all the records with ingredients
 # run ner model on all the ingredients name present in recipe of mongodb database and save it as ner_1
 
 # iteration #1 : 
 
-from batch_helper import *
 
 #step #1 : load model and sanity check
 
 # Reimplement the logic to find the path where stanza_corenlp is installed.
-core_nlp_path = os.getenv('CORENLP_HOME', str(Path.home() / 'stanza_corenlp'))
+# core_nlp_path = os.getenv('CORENLP_HOME', str(Path.home() / 'stanza_corenlp'))
 
 # A heuristic to find the right jar file
-classpath = [str(p) for p in Path(core_nlp_path).iterdir() if re.match(r"stanford-corenlp-[0-9.]+\.jar", p.name)][0]
+# classpath = [str(p) for p in Path(core_nlp_path).iterdir() if re.match(r"stanford-corenlp-[0-9.]+\.jar", p.name)][0]
 # print(classpath)
 
 # load model
-model_name = 'ar'
-model_file = f'/home/himani/cooking/notebooks/{model_name}.model.ser.gz'
-ner_prop_filename = f'/home/himani/cooking/notebooks/{model_name}.model.props'
+# model_name = 'ar'
+# model_file = f'/home/himani/cooking/notebooks/{model_name}.model.ser.gz'
+# ner_prop_filename = f'/home/himani/cooking/notebooks/{model_name}.model.props'
 
 # sanity check
 # annotations = annotate_ner(model_file,
@@ -40,64 +78,64 @@ ner_prop_filename = f'/home/himani/cooking/notebooks/{model_name}.model.props'
 #step #2 : convert pdf 2 text
 
 # read 1st file
-files_list = os.listdir("/home/himani/cooking/books/")
-files_list.sort()
+# files_list = os.listdir("/home/himani/cooking/books/")
+# files_list.sort()
 
-files_loc = "/home/himani/cooking/books/"
-first_file = files_list[-1]
+# files_loc = "/home/himani/cooking/books/"
+# first_file = files_list[-1]
 
 # creating a pdf file object
-pdfFileObj = open(files_loc + '/' + first_file, 'rb')
+# pdfFileObj = open(files_loc + '/' + first_file, 'rb')
 
 # creating a pdf reader object
-pdfReader = PyPDF2.PdfReader(pdfFileObj)
+# pdfReader = PyPDF2.PdfReader(pdfFileObj)
 
-book_data = []
+# book_data = []
 
 # printing number of pages in pdf file
-for page_no in range(len(pdfReader.pages)):
+# for page_no in range(len(pdfReader.pages)):
 
-    print('9999-99-99 99:99:99 INFO: page no-', page_no)
+    # print('9999-99-99 99:99:99 INFO: page no-', page_no)
 
     # creating a page object
-    pageObj = pdfReader.pages[page_no]
+    # pageObj = pdfReader.pages[page_no]
 
     # extracting text from page
-    text = pageObj.extract_text()
+    # text = pageObj.extract_text()
     # text_split = text.split()
     # print(text)
 
-    annotations = annotate_ner(model_file, [text])
+    # annotations = annotate_ner(model_file, [text])
     # print(annotations)
 
-    if len(annotations) == 1:
+    # if len(annotations) == 1:
         # print(extract_ner_data(annotations[0]))
 
         # check annotation
         # print(annotations[0])
 
         # check tokens
-        tokens = [token for sentence in annotations[0].sentence for token in sentence.token]
+        # tokens = [token for sentence in annotations[0].sentence for token in sentence.token]
         # print(tokens)
 
-        ners = []
-        words = []
+        # ners = []
+        # words = []
 
         # check ner
-        for t in tokens:
+        # for t in tokens:
             # print(t.coarseNER, ':', t.word)
-            ners.append(t.coarseNER)
-            words.append(t.word)
-    else:
-        print('9999-99-99 99:99:99 INFO: annotations contain more than 1 text')
+            # ners.append(t.coarseNER)
+            # words.append(t.word)
+    # else:
+        # print('9999-99-99 99:99:99 INFO: annotations contain more than 1 text')
 
-    book_data.append({'text': text, 'ners':ners, 'words':words})
+    # book_data.append({'text': text, 'ners':ners, 'words':words})
     # print(book_data)
 
     # if page_no == 5:
     #     break
 
-print('9999-99-99 99:99:99 INFO: Saving into Pandas Dataframe')
+# print('9999-99-99 99:99:99 INFO: Saving into Pandas Dataframe')
 
-book_df = pd.DataFrame(book_data)
-book_df.to_csv(first_file+'.csv', index=None)
+# book_df = pd.DataFrame(book_data)
+# book_df.to_csv(first_file+'.csv', index=None)

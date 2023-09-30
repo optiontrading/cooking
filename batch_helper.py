@@ -9,19 +9,29 @@ from tqdm.notebook import tqdm
 from stanza.server import CoreNLPClient
 from dataclasses import dataclass, asdict
 import pandas as pd
+import pymongo
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
 
 # Use a pipeline as a high-level helper
 from transformers import pipeline
 
-
+pipe = pipeline("token-classification", model="edwardjross/xlm-roberta-base-finetuned-recipe-all")
 
 # load ner model and return ingredient name
 def ner_mode_1(ingredient_str):
-    print(ingredient_str)
-    pipe = pipeline("token-classification", model="edwardjross/xlm-roberta-base-finetuned-recipe-all")
+    ner = []
+    # print(ingredient_str)
+    # pipe = pipeline("token-classification", model="edwardjross/xlm-roberta-base-finetuned-recipe-all")
     results = pipe(ingredient_str, grouped_entities=True)
-    for entity in results:
-        print(entity['entity_group'], ' : ', entity['word'])
+    ner = [entity['word'] for entity in results if entity['entity_group'] == 'NAME']
+    # for entity in results:
+        # print(entity['entity_group'], ' : ', entity['word'])
+        # ner.append(entity['entity_group'])
+
+    ner = ', '.join(ner)
+    # print(ner)
+    return ner
 
 # helper function to filter recipe based on minimum number of ingredients
 def sort_recipes_based_on_ingredients(filtered_data):
