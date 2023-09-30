@@ -5,6 +5,8 @@ from flask import request
 from app import app
 import requests
 from curl_python import search_ingredients
+from batch_helper import sort_recipes_based_on_ingredients
+from batch_helper import ner_mode_1
 
 # html page for searching ingredients
 @app.route('/')
@@ -31,6 +33,11 @@ def search():
     filtered_data = results_found['hits']['hits']
 
     filtered_data = [_['_source'] for _ in filtered_data]
+
+    [ner_mode_1(_['ingredients']) for _ in filtered_data]
+
+    # sort recipes based on number of ingredients
+    # filtered_data = sort_recipes_based_on_ingredients(filtered_data)
 
     # return jsonify(results_found)
     # return jsonify(filtered_data)

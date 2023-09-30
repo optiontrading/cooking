@@ -10,6 +10,27 @@ from stanza.server import CoreNLPClient
 from dataclasses import dataclass, asdict
 import pandas as pd
 
+# Use a pipeline as a high-level helper
+from transformers import pipeline
+
+
+
+# load ner model and return ingredient name
+def ner_mode_1(ingredient_str):
+    print(ingredient_str)
+    pipe = pipeline("token-classification", model="edwardjross/xlm-roberta-base-finetuned-recipe-all")
+    results = pipe(ingredient_str, grouped_entities=True)
+    for entity in results:
+        print(entity['entity_group'], ' : ', entity['word'])
+
+# helper function to filter recipe based on minimum number of ingredients
+def sort_recipes_based_on_ingredients(filtered_data):
+    # todo : first use NER model to find ingredients present
+    # todo : then sort the list based on minimum number of ingredients
+    # filtered_data = [_['ingredients'] for _ in filtered_data]
+
+    return filtered_data
+
 def annotate_ner(ner_model_file: str, texts: List[str], tokenize_whitespace: bool = True):
     properties = {"ner.model": ner_model_file, "tokenize.whitespace": tokenize_whitespace, "ner.applyNumericClassifiers": False}
     

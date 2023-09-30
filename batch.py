@@ -1,3 +1,7 @@
+# run ner model on all the ingredients name present in recipe of mongodb database and save it as ner_1
+
+# iteration #1 : 
+
 from batch_helper import *
 
 #step #1 : load model and sanity check

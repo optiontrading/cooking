@@ -7,7 +7,7 @@ def search_ingredients(ingredient):
    json_body = '{"query" : {"match" : { "ingredients": "%s" }}}'%(ingredient)
    resp = requests.get(uri, headers=headers, data=json_body)
    resp_text = json.loads(resp.text)
-   print ("resp_text:", resp_text)
+   # print ("resp_text:", resp_text)
    return resp_text
 
 
