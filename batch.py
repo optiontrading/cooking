@@ -32,8 +32,12 @@ for doc in cursor:
     # doc['ingredients']
     # doc['ner_1'] = ner_mode_1(doc['ingredients'])
     # print(doc['ner_1'])
-    doc['ner_2'] = ner_mode_2(doc['ingredients'])
-    print(doc['ner_2'])
+    # doc['ner_2'] = ner_mode_2(doc['ingredients'])
+    # print(doc['ner_2'])
+    # doc['ner_3'] = ner_mode_3(doc['ingredients'])
+    # print(doc['ner_3'])
+    doc['ner_4'] = ner_mode_4(doc['ingredients'])
+    # print(doc['ner_4'])
     col.update_one({'_id':doc['_id']}, {"$set": doc}, upsert=False)
 
     # todo : save document back

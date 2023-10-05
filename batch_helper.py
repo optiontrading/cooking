@@ -23,7 +23,49 @@ import spacy
 
 # ner 2
 # load the model and test set. Again, change the paths as required
-nlp = spacy.load('/home/himani/cooking/notebooks/TASTEset/output_eff/model-best')
+# nlp = spacy.load('/home/himani/cooking/notebooks/TASTEset/output_eff/model-best')
+
+def ner_mode_4(ingredient_str):
+
+    # load model
+    model_name = 'gk'
+    model_file = f'/home/himani/cooking/notebooks/{model_name}.model.ser.gz'
+    ner_prop_filename = f'/home/himani/cooking/notebooks/{model_name}.model.props'
+
+    annotations = annotate_ner(model_file,
+        [ingredient_str])
+
+    tokens = [token for sentence in annotations[0].sentence for token in sentence.token]
+
+    # for t in tokens:
+        # print(t.coarseNER, ':', t.word)
+
+    ner = [t.word for t in tokens if t.coarseNER == 'NAME']
+
+    ner = ', '.join(ner)
+    # print(ner)
+    return ner
+
+def ner_mode_3(ingredient_str):
+
+    # load model
+    model_name = 'ar'
+    model_file = f'/home/himani/cooking/notebooks/{model_name}.model.ser.gz'
+    ner_prop_filename = f'/home/himani/cooking/notebooks/{model_name}.model.props'
+
+    annotations = annotate_ner(model_file,
+        [ingredient_str])
+
+    tokens = [token for sentence in annotations[0].sentence for token in sentence.token]
+
+    # for t in tokens:
+        # print(t.coarseNER, ':', t.word)
+
+    ner = [t.word for t in tokens if t.coarseNER == 'NAME']
+
+    ner = ', '.join(ner)
+    # print(ner)
+    return ner
 
 # load ner model and return ingredient name
 def ner_mode_2(ingredient_str):
